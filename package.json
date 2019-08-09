@@ -1,0 +1,32 @@
+{
+  "name": "battleship_ai",
+  "version": "1.0.0",
+  "description": "Good old battleship game with smart AI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashotovich1990/battleship.git"
+  },
+  "author": "Aram S.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ashotovich1990/battleship/issues"
+  },
+  "homepage": "https://github.com/Ashotovich1990/battleship#readme",
+  "devDependencies": {
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
