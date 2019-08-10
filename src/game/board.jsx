@@ -5,6 +5,13 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = { board: this.generateBoard()};
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(i,j) {
+        let new_board = this.state.board.slice();
+        new_board[i][j] = 1; 
+        this.setState({board: new_board});
     }
 
     generateBoard() {
@@ -20,7 +27,7 @@ class Board extends React.Component {
         return (
             <div>
                 {this.state.board.map((x,i) => {
-                    return <div className="row">{x.map((y, j) => <Square value={[i,j]}/>)} </div>;
+                    return <div key={i} className="row"> {x.map((y, j) => <div key={[i,j]} onClick={() => this.handleClick(i,j)}><Square value={y}/></div>)} </div>;
                 })}
             </div>
         )
