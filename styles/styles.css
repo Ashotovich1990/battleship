@@ -4,3 +4,10 @@
     border: solid;
     justify-content: space-around;
 }
+
+.cell {
+    border: solid;
+    width: 100%;
+    display: flex;
+    justify-content: inherit;
+}

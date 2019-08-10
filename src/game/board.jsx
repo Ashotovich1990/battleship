@@ -10,8 +10,14 @@ class Board extends React.Component {
 
     handleClick(i,j) {
         let new_board = this.state.board.slice();
-        new_board[i][j] = 1; 
-        this.setState({board: new_board});
+        if (new_board[i][j] !== 2 || new_board[i][j] !== 3) {
+            if (!new_board[i][j]) {
+                new_board[i][j] = 3; 
+            } else if (new_board[i][j] === 1) {
+                new_board[i][j] = 2;
+            }
+            this.setState({board: new_board});
+        }
     }
 
     generateBoard() {
@@ -27,7 +33,7 @@ class Board extends React.Component {
         return (
             <div>
                 {this.state.board.map((x,i) => {
-                    return <div key={i} className="row"> {x.map((y, j) => <div key={[i,j]} onClick={() => this.handleClick(i,j)}><Square value={y}/></div>)} </div>;
+                    return <div key={i} className="row"> {x.map((y, j) => <div className="cell" key={[i,j]} onClick={() => this.handleClick(i,j)}><Square value={y}/></div>)} </div>;
                 })}
             </div>
         )
