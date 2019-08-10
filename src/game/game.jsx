@@ -1,4 +1,5 @@
 import React from 'react'; 
+import Board from './board';
 
 class Game extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class Game extends React.Component {
         if (!this.state.start) {
             return this.startButton();
         } else {
-            return <div>Play</div>;
+            return <Board />;
         }
     }
 
