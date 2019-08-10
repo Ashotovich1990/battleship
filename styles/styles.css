@@ -1,0 +1,6 @@
+.row {
+    display: flex;
+    list-style: none;
+    border: solid;
+    justify-content: space-around;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import Square from "./square";
 
 class Board extends React.Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class Board extends React.Component {
     generateBoard() {
         let res = []; 
         for (let i = 0; i < 10; i++) {
-            let row = [].fill(0, 0, 9);
+            let row = Array(10).fill(0)
             res.push(row);
         };
         return res;
@@ -18,7 +19,9 @@ class Board extends React.Component {
     render() {
         return (
             <div>
-                {this.state.board.map((x,i) => <li>{i}</li>)}
+                {this.state.board.map((x,i) => {
+                    return <div className="row">{x.map((y, j) => <Square value={[i,j]}/>)} </div>;
+                })}
             </div>
         )
     }
