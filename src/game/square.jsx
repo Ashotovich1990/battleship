@@ -7,7 +7,7 @@ class Square extends React.Component {
     }
 
     content() {
-        if (!this.props.value || this.props.value === 1) return "<3";
+        if (this.props.value === 5) return "<3";
         return this.props.value;
     }
 

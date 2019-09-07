@@ -1,5 +1,6 @@
 import React from "react";
 import Square from "./square";
+import {randomPlaceShips} from "./ai_logic/placeShips";
 
 class Board extends React.Component {
     constructor(props) {
@@ -23,9 +24,10 @@ class Board extends React.Component {
     generateBoard() {
         let res = []; 
         for (let i = 0; i < 10; i++) {
-            let row = Array(10).fill(0)
+            let row = Array(10).fill(1)
             res.push(row);
         };
+        randomPlaceShips(res);
         return res;
     }
 
