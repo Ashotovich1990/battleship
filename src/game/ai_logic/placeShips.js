@@ -27,7 +27,7 @@ const changePos = (pos,dir,size,board) => {
             return; 
         }
     }; 
-    return pos;
+    return true;
 }
 
 const placeOptions = (size, board) => {
@@ -39,19 +39,37 @@ const placeOptions = (size, board) => {
         for (let i = 0; i < directions.length; i++) {
             let pos = [...start];
             let end = changePos(pos,directions[i],size,board);
-            if (end) options.push(end);
+            if (end) options.push(directions[i]);
         };
    }
-    let end = options[Math.floor(Math.random()*options.length)];
-    return [start,end];
+    let dir = options[Math.floor(Math.random()*options.length)];
+    return {
+        start,
+        dir
+    };
 };
 
 
 export const randomPlaceShips = (board) => {
     for (let i = 4; i > 0; i--) {
         let pos = placeOptions(i,board);
-        board[pos[0][0]][pos[0][1]] = 5;
-        board[pos[1][0]][pos[1][1]] = 5;
+        for (let j = 0; j < i; j++) {
+            board[pos.start[0]][pos.start[1]] = 5;
+            switch (pos.dir) {
+                case "right": 
+                    pos.start[1]++;
+                    break;
+                case "left": 
+                    pos.start[1]--;
+                    break;
+                case "up": 
+                    pos.start[0]++;
+                    break;
+                case "down": 
+                    pos.start[0]--;
+                    break;
+            }
+        }
     }
 };
 
