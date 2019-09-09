@@ -33,9 +33,11 @@ class Board extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="board">
                 {this.state.board.map((x,i) => {
-                    return <div key={i} className="row"> {x.map((y, j) => <div className="cell" key={[i,j]} onClick={() => this.handleClick(i,j)}><Square value={y}/></div>)} </div>;
+                    return (
+                    <div key={i} className="row"> {x.map((y, j) => <div className="cell" key={[i,j]} onClick={() => this.handleClick(i,j)}><Square value={y}/></div>)} </div>
+                    );
                 })}
             </div>
         )

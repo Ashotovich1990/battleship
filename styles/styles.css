@@ -1,3 +1,12 @@
+.game {
+    display: flex;
+    justify-content: space-around;
+}
+
+.board {
+    min-width: 400px;
+}
+
 .row {
     display: flex;
     list-style: none;
