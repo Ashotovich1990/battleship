@@ -13,10 +13,10 @@ class Board extends React.Component {
         if (this.props.player && this.props.turn) {
             let new_board = this.state.board.slice();
             if (new_board[i][j] !== 2 || new_board[i][j] !== 3) {
-                if (!new_board[i][j]) {
-                    new_board[i][j] = 3; 
-                } else if (new_board[i][j] === 1) {
-                    new_board[i][j] = 2;
+                if (new_board[i][j] === 1) {
+                    new_board[i][j] = 2; 
+                } else if (new_board[i][j] === 5) {
+                    new_board[i][j] = 3;
                 };
                 this.setState({board: new_board});
             };
