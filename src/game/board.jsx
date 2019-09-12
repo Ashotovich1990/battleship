@@ -10,15 +10,18 @@ class Board extends React.Component {
     }
 
     handleClick(i,j) {
-        let new_board = this.state.board.slice();
-        if (new_board[i][j] !== 2 || new_board[i][j] !== 3) {
-            if (!new_board[i][j]) {
-                new_board[i][j] = 3; 
-            } else if (new_board[i][j] === 1) {
-                new_board[i][j] = 2;
-            }
-            this.setState({board: new_board});
-        }
+        if (this.props.player && this.props.turn) {
+            let new_board = this.state.board.slice();
+            if (new_board[i][j] !== 2 || new_board[i][j] !== 3) {
+                if (!new_board[i][j]) {
+                    new_board[i][j] = 3; 
+                } else if (new_board[i][j] === 1) {
+                    new_board[i][j] = 2;
+                };
+                this.setState({board: new_board});
+            };
+            this.props.handleTurn();
+        };
     }
 
     generateBoard() {
