@@ -15,7 +15,7 @@ class Play extends React.Component {
     render() {
         return (
             <div className="game">
-                <Board player={true} turn={this.state.turn} handleTurn={this.handleTurn}/>
+                <Board player={false} turn={this.state.turn} handleTurn={this.handleTurn}/>
                 <Board player={true} turn={!this.state.turn} handleTurn={this.handleTurn}/>
             </div>
         );

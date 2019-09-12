@@ -1,4 +1,4 @@
-const randomStart = (board) => {
+export const randomStart = (board) => {
     let randomStart = Math.floor(Math.random() * 100);
     while (board[Math.floor(randomStart/10)][randomStart%10] !== 1) {
         randomStart = Math.floor(Math.random() * 100);
