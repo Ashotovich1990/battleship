@@ -30,9 +30,19 @@ export const choosePos = (board, options)=> {
     return randomStart(board);
 };
 
-// arr = [[1,1,1,1,1],[1,1,1,2,1]]
-// options = {'13'=>[1,3]};
+export const hideBoard = board => {
+    let new_board = board.map(el => {
+        return el.map(spot => spot === 5 ? 1 : spot);
+    });
+    return new_board;
+}
 
-const filterOptions = options => {
-    // takes possible options and elminiates ships that are already completelty destroyed;
+export const findOptions = board => {
+    let res = {};
+    board.forEach((row,i) => {
+        row.forEach((cell,j) => {
+            if (cell === 3) res[`${i}-${j}`] = [i,j];
+        })
+    })
+    return res;
 }
