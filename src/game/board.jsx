@@ -23,9 +23,7 @@ class Board extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.player && this.props.turn  && this.props.turn !== prevProps.turn) {
             let board = hideBoard(this.state.board);
-            let options = findOptions(board);
-            console.log(options)
-            let pos = choosePos(board,options);
+            let pos = choosePos(board);
             let new_board = makeMove(...pos,this.state.board);
             this.setState({board: new_board}, () => {
                 this.props.handleTurn();
