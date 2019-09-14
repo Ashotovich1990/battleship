@@ -14,6 +14,7 @@ class Board extends React.Component {
     handleClick(i,j) {
         if (!this.props.player && this.props.turn) {
             let new_board = makeMove(i,j,this.state.board);
+            if (new_board[i][j] === 3) this.props.countStrike(!this.props.player);
             this.setState({board: new_board}, () => {
                 this.props.handleTurn();
             });
@@ -25,6 +26,7 @@ class Board extends React.Component {
             let board = hideBoard(this.state.board);
             let pos = choosePos(board);
             let new_board = makeMove(...pos,this.state.board);
+            if (new_board[pos[0]][pos[1]] === 3) this.props.countStrike(!this.props.player);
             this.setState({board: new_board}, () => {
                 this.props.handleTurn();
             });
