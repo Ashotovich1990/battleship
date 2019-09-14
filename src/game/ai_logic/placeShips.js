@@ -1,6 +1,20 @@
+const isAdjasent = (board,pos) => {
+    const isEmpty = () => {
+        if (!board[pos[0]] || !board[pos[0]][pos[1]]) return true;
+        if (board[pos[0]][pos[1]] === 1) return true;
+        return false;
+    }
+    return (
+        isEmpty(board,[pos[0]-1,pos[1]]) 
+        && isEmpty(board,[pos[0]+1,pos[1]]) 
+        && isEmpty(board,[pos[0],pos[1]-1]) 
+        && isEmpty(board,[pos[0]-1,pos[1]+1])
+    );
+};
+
 export const randomStart = (board) => {
     let randomStart = Math.floor(Math.random() * 100);
-    while (board[Math.floor(randomStart/10)][randomStart%10] !== 1) {
+    while (board[Math.floor(randomStart/10)][randomStart%10] !== 1 && !isAdjasent(board,[Math.floor(randomStart/10),randomStart%10])) {
         randomStart = Math.floor(Math.random() * 100);
     };
     return [Math.floor(randomStart/10), randomStart%10]; 
@@ -23,7 +37,7 @@ const changePos = (pos,dir,size,board) => {
                 break;
         }
         
-        if (!board[pos[0]] || !board[pos[0]][pos[1]] || !board[pos[0]][pos[1]] === 5) {
+        if (!isAdjasent(board,pos) || !board[pos[0]] || !board[pos[0]][pos[1]] || !board[pos[0]][pos[1]] === 5) {
             return; 
         }
     }; 
