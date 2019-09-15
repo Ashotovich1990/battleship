@@ -1,1 +1,0 @@
-// make sure ships are not placed next to each other

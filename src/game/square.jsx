@@ -9,7 +9,7 @@ class Square extends React.Component {
     content() {
         if (this.props.value === 2) return "X";
         if (this.props.value === 3) return "(Y)";
-        if (this.props.value === 5) return "PP";
+        if (this.props.value === 5) return "PPP";
         return "O";
     }
 

@@ -11,7 +11,7 @@ export const choosePos = (board)=> {
             };
         }
 
-        if (options[key].dir !== "vetical") {
+        if (options[key].dir !== "vertical") {
             f_idx = options[key].pos[0]-1;
             s_idx = options[key].pos[1];
             if (checkValid()) return [f_idx,s_idx];
@@ -58,5 +58,3 @@ export const findOptions = board => {
     })
     return res;
 }
-
-// option[idx] = { pos: idx, dir: ""}
