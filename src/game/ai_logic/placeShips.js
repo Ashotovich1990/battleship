@@ -2,6 +2,7 @@ const isAvailable = (board,pos) => {
     const isEmpty = (board,pos) => {
         if (!board[pos[0]] || !board[pos[0]][pos[1]]) return true;
         if (board[pos[0]][pos[1]] === 1) return true;
+        if (board[pos[0]][pos[1]] === 2) return true;
         return false;
     }
     return (

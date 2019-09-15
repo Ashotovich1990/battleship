@@ -20,7 +20,7 @@ class Play extends React.Component {
 
     
     render() {
-        if (this.state.enemyShips === 10 || this.state.playerShips === 10) {
+        if (this.state.enemyShips === 20 || this.state.playerShips === 20) {
             return <div>GAME OVER</div>
         }
         return (
