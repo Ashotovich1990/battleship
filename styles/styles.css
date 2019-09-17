@@ -4,7 +4,7 @@
 }
 
 .board {
-    min-width: 400px;
+    /* min-width: 400px; */
 }
 
 .row {
@@ -15,8 +15,26 @@
 }
 
 .cell {
+    min-height: 50px;
+    min-width: 50px;
     border: solid;
     width: 100%;
     display: flex;
     justify-content: inherit;
 }
+
+.missed {
+    background-color: red;
+    width: 100%;
+}
+
+.hidden {
+    background-color: aqua;
+    width: 100%;
+}
+
+.strike {
+    background-color: yellow;
+    width: 100%;
+}
+
