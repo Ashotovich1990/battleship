@@ -1,7 +1,5 @@
+
 body {
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center; */
     color: blue;
     background-image : url(http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=5c5c5c&density=13&opacity=62);
 }
@@ -109,5 +107,16 @@ body {
 
 .pushButton {
     cursor: pointer;
+}
+
+.pointer {
+    font-size: -webkit-xxx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightPointer {
+    color: rgb(214, 8, 8);
 }
 

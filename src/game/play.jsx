@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './board';
+import {turnPointer} from "./turnPointer";
 
 class Play extends React.Component {
     constructor(props) {
@@ -41,6 +42,7 @@ class Play extends React.Component {
                 </div>
                 <div className="boards">
                     <Board player={false} turn={this.state.turn} handleTurn={this.handleTurn} countStrike={this.countStrike}/>
+                    {turnPointer(this.state.turn)}
                     <Board player={true} turn={!this.state.turn} handleTurn={this.handleTurn} countStrike={this.countStrike}/>
                 </div>
             </div>

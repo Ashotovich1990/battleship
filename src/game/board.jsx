@@ -28,9 +28,12 @@ class Board extends React.Component {
             let pos = choosePos(board);
             let new_board = makeMove(...pos,this.state.board);
             if (new_board[pos[0]][pos[1]] === 3) this.props.countStrike(!this.props.player);
-            this.setState({board: new_board}, () => {
-                this.props.handleTurn();
-            });
+            window.setTimeout(() => {
+                this.setState({board: new_board}, () => {
+                    window.setTimeout(() => {
+                    this.props.handleTurn();
+                },500)});
+            }, 500)
         };
     }
 
