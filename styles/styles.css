@@ -1,3 +1,7 @@
+body {
+    /* background-color: #f2eecb; */
+    background-image : url(http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=5c5c5c&density=13&opacity=62);
+}
 .game {
     display: flex;
     justify-content: space-around;
@@ -10,31 +14,45 @@
 .row {
     display: flex;
     list-style: none;
-    border: solid;
+    /* border: solid blue 2px; */
+    border-top: solid blue 2px;
+    border-left: solid blue 2px;
     justify-content: space-around;
+}
+
+#last {
+    border-bottom: solid blue 2px;   
 }
 
 .cell {
     min-height: 50px;
     min-width: 50px;
-    border: solid;
+    border-right: solid blue 2px;
     width: 100%;
     display: flex;
     justify-content: inherit;
 }
 
 .missed {
-    background-color: red;
+    background-color: rgb(212, 66, 66);
     width: 100%;
 }
 
 .hidden {
-    background-color: aqua;
+    background-image : url(http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=5c5c5c&density=13&opacity=62);
+    /* background-color: #f2eecb; */
     width: 100%;
 }
 
 .strike {
-    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image : url(http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=5c5c5c&density=13&opacity=62);
     width: 100%;
+}
+
+.ship {
+    font-size: xx-large;
 }
 

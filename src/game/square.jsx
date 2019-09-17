@@ -8,11 +8,7 @@ class Square extends React.Component {
     }
 
     content() {
-        // if (this.props.value === 2) return "X";
-        // if (this.props.value === 3) return "(Y)";
-
-        // if (this.props.value === 1) return "PP";
-        // this.setState({style: "empty-cell"});
+        if (this.props.value === 3) return <div className="ship">{"X"}</div>;
     }; 
 
     componentDidUpdate(prevProps) {

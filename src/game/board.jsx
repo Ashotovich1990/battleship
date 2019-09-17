@@ -49,7 +49,7 @@ class Board extends React.Component {
             <div className="board">
                 {this.state.board.map((x,i) => {
                     return (
-                    <div key={i} className="row"> {x.map((y, j) => <div className="cell" id={`${i-j}`} key={[i,j]} onClick={() => this.handleClick(i,j)}><Square value={y}/></div>)} </div>
+                    <div key={i} id={i === 9 ? "last" : i} className="row"> {x.map((y, j) => <div className="cell" id={`${i-j}`} key={[i,j]} onClick={() => this.handleClick(i,j)}><Square value={y}/></div>)} </div>
                     );
                 })}
             </div>
