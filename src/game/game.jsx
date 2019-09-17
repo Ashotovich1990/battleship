@@ -14,12 +14,17 @@ class Game extends React.Component {
         if (!this.state.start) {
             return this.startButton();
         } else {
-            return <Play/>;
+            return <Play restart={this.startGame}/>;
         }
     }
 
     startButton() {
-        return <div onClick={this.startGame}>Start Game</div>
+        return (
+            <div className="start" onClick={this.startGame}>
+                <div className="pushButton"><i class="fas fa-ship"></i></div>
+                <div className="pushButton">Start Game</div>
+            </div>
+            );
     }
 
     startGame() {

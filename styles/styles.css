@@ -1,8 +1,51 @@
 body {
-    /* background-color: #f2eecb; */
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
     background-image : url(http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=5c5c5c&density=13&opacity=62);
 }
 .game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.start {
+    height: -webkit-fill-available;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: -webkit-xxx-large;
+}
+
+.count {
+    display: flex;
+    justify-content: space-around;
+    font-size: xx-large;
+    margin-bottom: 3%;
+    margin-top: 2%;
+}
+
+.gameover {
+    height: -webkit-fill-available;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: -webkit-xxx-large;
+}
+
+.restart {
+    cursor: pointer;
+}
+
+.gameoverMsg {
+    margin-bottom: 3%;
+    font-size: smaller;
+}
+
+.boards {
     display: flex;
     justify-content: space-around;
 }
@@ -31,20 +74,27 @@ body {
     width: 100%;
     display: flex;
     justify-content: inherit;
+    cursor: pointer;
 }
 
-.missed {
+.strike {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: rgb(212, 66, 66);
     width: 100%;
 }
 
 .hidden {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-image : url(http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=5c5c5c&density=13&opacity=62);
     /* background-color: #f2eecb; */
     width: 100%;
 }
 
-.strike {
+.missed {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,5 +104,9 @@ body {
 
 .ship {
     font-size: xx-large;
+}
+
+.pushButton {
+    cursor: pointer;
 }
 

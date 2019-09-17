@@ -8,7 +8,10 @@ class Square extends React.Component {
     }
 
     content() {
-        if (this.props.value === 3) return <div className="ship">{"X"}</div>;
+        if (this.props.player) {
+            if (this.props.value === 5) return <div className="ship">{"O"}</div>;
+        }
+        if (this.props.value === 2) return <div className="ship">{"X"}</div>;
     }; 
 
     componentDidUpdate(prevProps) {
