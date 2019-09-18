@@ -120,3 +120,6 @@ body {
     color: rgb(214, 8, 8);
 }
 
+.shiplist {
+    list-style: none;
+}

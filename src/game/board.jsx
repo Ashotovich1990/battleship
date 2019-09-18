@@ -1,11 +1,9 @@
 import React from "react";
 import Square from "./square";
 import {randomPlaceShips} from "./ai_logic/placeShips";
-import {choosePos, hideBoard, countDestroyedShips} from "./ai_logic/makeMove";
+import {choosePos, hideBoard, countDestroyedShips} from "./ai_logic/fireShot";
 import makeMove from "./player";
 import {displayShips} from "./shipCount";
-
-let SHIPS = {battleship: 0, crusier: 0, destroyer : 0, patrol: 0}
 
 class Board extends React.Component {
     constructor(props) {
@@ -28,11 +26,11 @@ class Board extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.player && this.props.turn  && this.props.turn !== prevProps.turn) {
             let board = hideBoard(this.state.board);
-            let pos = choosePos(board);
+            let ships = countDestroyedShips(board);
+            let pos = choosePos(board, ships);
             let new_board = makeMove(...pos,this.state.board);
             if (new_board[pos[0]][pos[1]] === 3) this.props.countStrike(!this.props.player);
-            SHIPS = countDestroyedShips(new_board);
-            console.log(SHIPS);
+             
             window.setTimeout(() => {
                 this.setState({board: new_board}, () => {
                     window.setTimeout(() => {
@@ -53,11 +51,12 @@ class Board extends React.Component {
     }
 
     render() {
-        let s ={};
-        if (this.props.player) s = countDestroyedShips(this.state.board);
+        let ships = {4 : 0, 3 : 0, 2 : 0, 1: 0};
+        let newShips = countDestroyedShips(this.state.board);
+        ships = {...ships, ...newShips};
         return (
             <div>
-                {displayShips(s)}
+                {displayShips(ships)}
                 <div className="board">
                     {this.state.board.map((x,i) => {
                         return (

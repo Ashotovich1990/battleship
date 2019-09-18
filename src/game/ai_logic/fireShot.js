@@ -1,6 +1,6 @@
 import {randomStart} from "./placeShips";
 
-export const choosePos = (board)=> {
+export const choosePos = (board, ships)=> {
     let options = findOptions(board);
     for(let key in options) {
         let f_idx;
@@ -11,6 +11,18 @@ export const choosePos = (board)=> {
             };
         }
 
+       
+        let pos = options[key].pos;
+        let size = shipSize(pos,board); 
+
+        if (size === 4) continue;
+       
+        if (size === 3 && ships[size+1] > 0) continue;
+        
+        if (size === 2 && ships[size+1] > 1 && ships[size+2] > 0) continue;
+        
+        if (size === 1 && ships[size+1] > 2 && ships[size+2] > 1 && ships[size+3] > 0) continue;
+        
         if (options[key].dir !== "horizontal") {
             f_idx = options[key].pos[0]-1;
             s_idx = options[key].pos[1];
@@ -63,18 +75,24 @@ export const countDestroyedShips = function(board) {
     let options = findOptions(board); 
     let ships = {}; 
     let seen = new Set();
-
-    for (let key in options) {
-        let pos = options[key].pos;
-        if (seen.has(`${pos[0]}_${pos[1]}`)) continue; 
-        let size = shipSize(pos,board);
-        
-        if (isShipDestroyed(pos,board,options[key].dir)) {
-            ships[size] = ships[size] ? ships[size] + 1 : 1;
-        }
-        seen = union([seen,collectShipPositions(...pos,board)]);
-        console.log(seen);
-    }; 
+    for (let i = 4; i > 0; i--) {
+        for (let key in options) {
+            let pos = options[key].pos;
+            if (seen.has(`${pos[0]}_${pos[1]}`)) continue; 
+            let size = shipSize(pos,board);
+            if (size === i) {
+                if (size === 4) {
+                    ships[size] = 1;
+                } else if ((size === 3 && ships[4]) || (size === 2 && ships[3] > 1 && ships[4])) {
+                    ships[size] = ships[size] ? ships[size] + 1 : 1;
+                } else if ((size === 1 && ships[2] > 2 && ships[3] > 1 && ships[4]) || isShipDestroyed(pos,board,options[key].dir)) {
+                    ships[size] = ships[size] ? ships[size] + 1 : 1;
+                }
+                seen = union([seen,collectShipPositions(...pos,board)]);
+            };
+        }; 
+        seen = new Set();
+    };
 
     return ships;
 };
