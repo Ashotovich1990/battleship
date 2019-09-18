@@ -2,7 +2,7 @@ import React from "react";
 import Square from "./square";
 import {randomPlaceShips} from "./ai_logic/placeShips";
 import {choosePos, hideBoard, countDestroyedShips} from "./ai_logic/fireShot";
-import makeMove from "./player";
+import makeMove from "./makeMove";
 import {displayShips} from "./shipCount";
 
 class Board extends React.Component {

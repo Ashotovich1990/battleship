@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch --mode=development"
+    "start": "webpack --watch --mode=development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -16,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/Ashotovich1990/battleship/issues"
   },
-  "homepage": "https://github.com/Ashotovich1990/battleship#readme",
+  "homepage": " https://ashotovich1990.github.io/battleship/",
   "devDependencies": {
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6"
@@ -26,6 +28,7 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   }

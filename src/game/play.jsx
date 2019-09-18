@@ -37,8 +37,8 @@ class Play extends React.Component {
         return (
             <div className="game">
                 <div className="count">
-                    <div>Enemy</div>
-                    <div>You</div>
+                    <div>Enemy Lost</div>
+                    <div>You Lost</div>
                 </div>
                 <div className="boards">
                     <Board player={false} turn={this.state.turn} handleTurn={this.handleTurn} countStrike={this.countStrike}/>
