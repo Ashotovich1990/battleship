@@ -11,7 +11,7 @@ export const choosePos = (board)=> {
             };
         }
 
-        if (options[key].dir !== "vertical") {
+        if (options[key].dir !== "horizontal") {
             f_idx = options[key].pos[0]-1;
             s_idx = options[key].pos[1];
             if (checkValid()) return [f_idx,s_idx];
@@ -21,7 +21,7 @@ export const choosePos = (board)=> {
             if (checkValid()) return [f_idx,s_idx];
         };
 
-        if (options[key].dir !== "horizontal") {
+        if (options[key].dir !== "vertical") {
             f_idx = options[key].pos[0];
             s_idx = options[key].pos[1]-1;
             if (checkValid()) return [f_idx,s_idx];
@@ -42,19 +42,126 @@ export const hideBoard = board => {
     return new_board;
 }
 
-export const findOptions = board => {
+export const findOptions = function(board) {
     let res = {};
     board.forEach((row,i) => {
         row.forEach((cell,j) => {
             if (cell === 3) {
                 res[`${i}-${j}`] = {pos : [i,j], dir : ""};
                 if (board[i-1] && board[i-1][j] === 3 || board[i+1] && board[i+1][j] === 3 ) {
-                    res[`${i}-${j}`].dir = "horizontal";
-                } else if (board[i][j-1] === 3 || board[i][j+1] === 3 ) {
                     res[`${i}-${j}`].dir = "vertical";
+                } else if (board[i][j-1] === 3 || board[i][j+1] === 3 ) {
+                    res[`${i}-${j}`].dir = "horizontal";
                 };
             };
         })
     })
     return res;
+}
+
+export const countDestroyedShips = function(board) {
+    let options = findOptions(board); 
+    let ships = {}; 
+    let seen = new Set();
+
+    for (let key in options) {
+        let pos = options[key].pos;
+        if (seen.has(`${pos[0]}_${pos[1]}`)) continue; 
+        let size = shipSize(pos,board);
+        
+        if (isShipDestroyed(pos,board,options[key].dir)) {
+            ships[size] = ships[size] ? ships[size] + 1 : 1;
+        }
+        seen = union([seen,collectShipPositions(...pos,board)]);
+        console.log(seen);
+    }; 
+
+    return ships;
+};
+
+const shipSize = function(pos,board) {
+    let i = pos[0];
+    let j = pos[1];
+
+    const countUp = (i,j) => {
+        if (!board[i] || board[i][j] !== 3) return 0;
+        return 1 + countUp(i+1,j,board);
+    };
+
+    const countDown = (i,j) => {
+        if (!board[i] || board[i][j] !== 3) return 0;
+        return 1 + countDown(i-1,j,board);
+    };
+
+    const countLeft = (i,j) => {
+        if (!board[i] || board[i][j] !== 3) return 0;
+        return 1 + countLeft(i,j-1,board);
+    };
+
+    const countRight = (i,j) => {
+        if (!board[i] || board[i][j] !== 3) return 0;
+        return 1 + countRight(i,j+1,board);
+    };
+
+    return countUp(i,j) + countDown(i,j) + countLeft(i,j) + countRight(i,j) - 3;
+}
+
+const isShipDestroyed = function(pos,board,dir) {
+    let i = pos[0];
+    let j = pos[1];
+
+    const checkUp = (i,j) => {
+        if (board[i] && board[i][j] === 1) return false;
+        if (!board[i] || board[i][j] === 2) return true;
+        return checkUp(i+1,j);
+    }; 
+
+    const checkDown = (i,j) => {
+        if (board[i] && board[i][j] === 1) return false;
+        if (!board[i] || board[i][j] === 2) return true;
+        return checkDown(i-1,j);
+    }; 
+
+    const checkLeft = (i,j) => {
+        if (board[i] && board[i][j] === 1) return false;
+        if (!board[i] || !board[i][j] || board[i][j] === 2) return true;
+        return checkLeft(i,j-1);
+    }; 
+
+    const checkRight = (i,j) => {
+        if (board[i] && board[i][j] === 1) return false;
+        if (!board[i] || !board[i][j] || board[i][j] === 2) return true;
+        return checkRight(i,j+1);
+    };
+    
+    if (dir === "vertical") return checkUp(i,j) && checkDown(i,j);
+    
+    if (dir === "horizontal") return checkRight(i,j) && checkLeft(i,j);
+
+    return checkUp(i,j) && checkDown(i,j) && checkLeft(i,j) && checkRight(i,j);
+};
+
+const collectShipPositions = function(i,j,board) {
+    let res = new Set(); 
+
+    const iterate = (i,j) => {
+        let posStr = `${i}_${j}`;
+        if (res.has(posStr)) return;
+        if (!board[i] || board[i][j] !== 3) return;
+        res.add(posStr);
+        iterate(i+1,j);
+        iterate(i-1,j);
+        iterate(i,j+1);
+        iterate(i,j-1);
+    }; 
+    
+    iterate(i,j);
+    return res;
+} 
+
+
+const union = function(sets) {
+    return sets.reduce((combined, list) => {
+      return new Set([...combined, ...list]);
+    }, new Set());
 }

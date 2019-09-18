@@ -1,8 +1,11 @@
 import React from "react";
 import Square from "./square";
 import {randomPlaceShips} from "./ai_logic/placeShips";
-import {choosePos, hideBoard, findOptions} from "./ai_logic/makeMove";
+import {choosePos, hideBoard, countDestroyedShips} from "./ai_logic/makeMove";
 import makeMove from "./player";
+import {displayShips} from "./shipCount";
+
+let SHIPS = {battleship: 0, crusier: 0, destroyer : 0, patrol: 0}
 
 class Board extends React.Component {
     constructor(props) {
@@ -28,12 +31,14 @@ class Board extends React.Component {
             let pos = choosePos(board);
             let new_board = makeMove(...pos,this.state.board);
             if (new_board[pos[0]][pos[1]] === 3) this.props.countStrike(!this.props.player);
+            SHIPS = countDestroyedShips(new_board);
+            console.log(SHIPS);
             window.setTimeout(() => {
                 this.setState({board: new_board}, () => {
                     window.setTimeout(() => {
                     this.props.handleTurn();
-                },500)});
-            }, 500)
+                },50)});
+            }, 50)
         };
     }
 
@@ -48,16 +53,21 @@ class Board extends React.Component {
     }
 
     render() {
+        let s ={};
+        if (this.props.player) s = countDestroyedShips(this.state.board);
         return (
-            <div className="board">
-                {this.state.board.map((x,i) => {
-                    return (
-                    <div key={i} id={i === 9 ? "last" : i} className="row"> {x.map((y, j) => <div className="cell" id={`${i-j}`} key={[i,j]} onClick={() => this.handleClick(i,j)}><Square player={this.props.player} value={y}/></div>)} </div>
-                    );
-                })}
+            <div>
+                {displayShips(s)}
+                <div className="board">
+                    {this.state.board.map((x,i) => {
+                        return (
+                        <div key={i} id={i === 9 ? "last" : i} className="row"> {x.map((y, j) => <div className="cell" id={`${i-j}`} key={[i,j]} onClick={() => this.handleClick(i,j)}><Square player={this.props.player} value={y}/></div>)} </div>
+                        )
+                    })}
+                </div>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Board;
