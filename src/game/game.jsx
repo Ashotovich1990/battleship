@@ -22,7 +22,7 @@ class Game extends React.Component {
     startButton() {
         return (
             <div className="start" onClick={this.startGame}>
-                <div className="pushButton"><i class="fas fa-ship"></i></div>
+                <div className="pushButton"><i className="fas fa-ship"></i></div>
                 <div id="startButton" className="pushButton">Start Game</div>
             </div>
             );

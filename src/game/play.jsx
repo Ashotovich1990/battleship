@@ -26,7 +26,7 @@ class Play extends React.Component {
         return (
             <div className="gameover">
                 <div className="gameoverMsg">{msg}</div>
-                <div className="restart" onClick={this.props.restart}><i class="fas fa-ship"/> Play Again</div>
+                <div className="restart" onClick={this.props.restart}><i className="fas fa-ship"/> Play Again</div>
             </div>
         );
     };
@@ -49,9 +49,9 @@ class Play extends React.Component {
                     {turnPointer(this.state.turn)}
                     <Board player={true} turn={!this.state.turn} handleTurn={this.handleTurn} countStrike={this.countStrike}/>
                 </div>
-                <div class="github-link">
-                    <a id="github" href="https://github.com/Ashotovich1990"><i class="fab fa-github"></i></a>
-                    <a id="linkedin" href="https://www.linkedin.com/in/aram-sargsyan-63035b177/"><i class="fab fa-linkedin"></i></a>
+                <div className="github-link">
+                    <a id="github" href="https://github.com/Ashotovich1990"><i className="fab fa-github"></i></a>
+                    <a id="linkedin" href="https://www.linkedin.com/in/aram-sargsyan-63035b177/"><i className="fab fa-linkedin"></i></a>
                 </div>
             </div>
         );

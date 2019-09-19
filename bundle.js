@@ -29942,7 +29942,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "pushButton"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-ship"
+        className: "fas fa-ship"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "startButton",
         className: "pushButton"
@@ -30095,7 +30095,7 @@ function (_React$Component) {
         className: "restart",
         onClick: this.props.restart
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-ship"
+        className: "fas fa-ship"
       }), " Play Again"));
     }
   }, {
@@ -30123,17 +30123,17 @@ function (_React$Component) {
         handleTurn: this.handleTurn,
         countStrike: this.countStrike
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "github-link"
+        className: "github-link"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         id: "github",
         href: "https://github.com/Ashotovich1990"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fab fa-github"
+        className: "fab fa-github"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         id: "linkedin",
         href: "https://www.linkedin.com/in/aram-sargsyan-63035b177/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fab fa-linkedin"
+        className: "fab fa-linkedin"
       }))));
     }
   }]);
@@ -30241,14 +30241,14 @@ function (_React$Component) {
         if (this.props.value === 5) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "ship"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          "class": "fas fa-ship"
+          className: "fas fa-ship"
         }));
       }
 
       if (this.props.value === 3) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ship"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-ship"
+        className: "fas fa-ship"
       }));
       if (this.props.value === 2) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ship"
