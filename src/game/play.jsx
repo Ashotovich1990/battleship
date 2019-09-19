@@ -21,7 +21,7 @@ class Play extends React.Component {
     };
 
     gameOver() {
-        let msg = this.state.enemyShips === 20 ? "You Won" : "You Lost";
+        let msg = this.state.enemyShips === 20 ? "You Won!" : "You Lost...";
         
         return (
             <div className="gameover">
@@ -33,7 +33,8 @@ class Play extends React.Component {
 
     render() {
         let gameOver;
-        if (this.state.enemyShips === 2 || this.state.playerShips === 2) gameOver = this.gameOver();
+        let turnMSG = this.state.turn ? "Choose target on the left board and click" : "Enemy shooting";
+        if (this.state.enemyShips === 20 || this.state.playerShips === 20) gameOver = this.gameOver();
         
         return (
             <div className="game">
@@ -42,6 +43,7 @@ class Play extends React.Component {
                     <div>Enemy Lost</div>
                     <div>You Lost</div>
                 </div>
+                <div className="turnMSG">{turnMSG}</div>
                 <div className="boards">
                     <Board player={false} turn={this.state.turn} handleTurn={this.handleTurn} countStrike={this.countStrike}/>
                     {turnPointer(this.state.turn)}

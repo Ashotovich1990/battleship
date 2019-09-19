@@ -29802,9 +29802,9 @@ function (_React$Component) {
           }, function () {
             window.setTimeout(function () {
               _this3.props.handleTurn();
-            }, 50);
+            }, 100);
           });
-        }, 50);
+        }, 100);
       }
 
       ;
@@ -29836,7 +29836,7 @@ function (_React$Component) {
       };
       var newShips = Object(_ai_logic_fireShot__WEBPACK_IMPORTED_MODULE_3__["countDestroyedShips"])(this.state.board);
       ships = _objectSpread({}, ships, {}, newShips);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_shipCount__WEBPACK_IMPORTED_MODULE_5__["displayShips"])(ships), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Object(_shipCount__WEBPACK_IMPORTED_MODULE_5__["displayShips"])(ships, this.props.player), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "board"
       }, this.state.board.map(function (x, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -30086,7 +30086,7 @@ function (_React$Component) {
   }, {
     key: "gameOver",
     value: function gameOver() {
-      var msg = this.state.enemyShips === 20 ? "You Won" : "You Lost";
+      var msg = this.state.enemyShips === 20 ? "You Won!" : "You Lost...";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "gameover"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -30102,12 +30102,15 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var gameOver;
-      if (this.state.enemyShips === 2 || this.state.playerShips === 2) gameOver = this.gameOver();
+      var turnMSG = this.state.turn ? "Choose target on the left board and click" : "Enemy shooting";
+      if (this.state.enemyShips === 20 || this.state.playerShips === 20) gameOver = this.gameOver();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "game"
       }, gameOver, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "count"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Enemy Lost"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You Lost")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "turnMSG"
+      }, turnMSG), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "boards"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_board__WEBPACK_IMPORTED_MODULE_1__["default"], {
         player: false,
@@ -30144,12 +30147,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-
-var countShips = function countShips(board) {};
-
-var displayShips = function displayShips(ships) {
+var displayShips = function displayShips(ships, left) {
   var content = [];
   var i = 4;
+  var style = left ? "shiplistLeft" : "shiplist";
 
   for (var key in ships) {
     var name = void 0;
@@ -30162,7 +30163,7 @@ var displayShips = function displayShips(ships) {
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "shiplist"
+    className: style
   }, content.reverse().map(function (ship, idx) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       key: idx
@@ -30286,11 +30287,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 var turnPointer = function turnPointer(turn) {
-  var icon = turn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fas fa-arrow-left"
-  })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fas fa-arrow-right"
-  }));
+  var icon; // let msg;
+
+  if (turn) {
+    icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-arrow-left"
+    })); // msg = "Target a cell on the left board and click";
+  } else {
+    icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-arrow-right"
+    })); // msg = "Enemy shooting";
+  }
+
+  ; // let icon = turn ?  <div><i className="fas fa-arrow-left"></i></div> : <div><i className="fas fa-arrow-right"></i></div>;
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pointer"
   }, icon);

@@ -35,8 +35,8 @@ class Board extends React.Component {
                 this.setState({board: new_board}, () => {
                     window.setTimeout(() => {
                     this.props.handleTurn();
-                },50)});
-            }, 50)
+                },100)});
+            }, 100)
         };
     }
 
@@ -56,7 +56,7 @@ class Board extends React.Component {
         ships = {...ships, ...newShips};
         return (
             <div>
-                {displayShips(ships)}
+                {displayShips(ships, this.props.player)}
                 <div className="board">
                     {this.state.board.map((x,i) => {
                         return (

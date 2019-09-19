@@ -1,13 +1,9 @@
 import React from "react"; 
 
-
-const countShips = board => {
-
-};
-
-export const displayShips = ships => {
+export const displayShips = (ships, left) => {
     let content = []; 
     let i = 4;
+    let style = left ? "shiplistLeft" : "shiplist";
     for (let key in ships) {
         let name;    
         if (key === "4") name = "Battleship";
@@ -18,7 +14,7 @@ export const displayShips = ships => {
         i--;
     }
     return (
-        <div className="shiplist">{content.reverse().map((ship,idx) => {
+        <div className={style}>{content.reverse().map((ship,idx) => {
             return <li key={idx}>{ship[0]} {ship[1]} of {ship[2]}</li>
         })}</div>
     );
