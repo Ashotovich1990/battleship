@@ -29,13 +29,15 @@ class Play extends React.Component {
                 <div className="restart" onClick={this.props.restart}><i class="fas fa-ship"/> Play Again</div>
             </div>
         );
-    }
-    
+    };
+
     render() {
-        if (this.state.enemyShips === 20 || this.state.playerShips === 20) return this.gameOver();
+        let gameOver;
+        if (this.state.enemyShips === 2 || this.state.playerShips === 2) gameOver = this.gameOver();
         
         return (
             <div className="game">
+                {gameOver}
                 <div className="count">
                     <div>Enemy Lost</div>
                     <div>You Lost</div>
@@ -47,7 +49,8 @@ class Play extends React.Component {
                 </div>
             </div>
         );
-    }
+    };
+        
 };
 
 export default Play;

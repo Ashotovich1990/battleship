@@ -29918,6 +29918,7 @@ function (_React$Component) {
     _this.content = _this.content.bind(_assertThisInitialized(_this));
     _this.startButton = _this.startButton.bind(_assertThisInitialized(_this));
     _this.startGame = _this.startGame.bind(_assertThisInitialized(_this));
+    _this.restartGame = _this.restartGame.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -29928,7 +29929,7 @@ function (_React$Component) {
         return this.startButton();
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_play__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          restart: this.startGame
+          restart: this.restartGame
         });
       }
     }
@@ -29943,6 +29944,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-ship"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "startButton",
         className: "pushButton"
       }, "Start Game"));
     }
@@ -29951,6 +29953,16 @@ function (_React$Component) {
     value: function startGame() {
       this.setState({
         start: !this.state.start
+      });
+    }
+  }, {
+    key: "restartGame",
+    value: function restartGame() {
+      this.setState({
+        start: !this.state.start
+      }, function () {
+        var button = document.getElementById("startButton");
+        button.click();
       });
     }
   }, {
@@ -30089,10 +30101,11 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (this.state.enemyShips === 20 || this.state.playerShips === 20) return this.gameOver();
+      var gameOver;
+      if (this.state.enemyShips === 2 || this.state.playerShips === 2) gameOver = this.gameOver();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "game"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, gameOver, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "count"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Enemy Lost"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You Lost")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "boards"
