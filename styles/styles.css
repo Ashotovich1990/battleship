@@ -145,3 +145,19 @@ body {
     font-size: x-large;
     color: red;
 }
+
+.github-link {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1%;
+    font-size: -webkit-xxx-large;
+}
+
+#github {
+    color: #0000ffb3;
+}
+
+#linkedin {
+    color: #0000ffb3;
+}
+

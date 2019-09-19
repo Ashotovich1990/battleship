@@ -30086,7 +30086,7 @@ function (_React$Component) {
   }, {
     key: "gameOver",
     value: function gameOver() {
-      var msg = this.state.enemyShips === 20 ? "You Won!" : "You Lost...";
+      var msg = this.state.enemyShips === 20 ? "You Won! You destroyed all enemy ships" : "You Lost...All your ships are destroyed";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "gameover"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -30122,7 +30122,19 @@ function (_React$Component) {
         turn: !this.state.turn,
         handleTurn: this.handleTurn,
         countStrike: this.countStrike
-      })));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "github-link"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "github",
+        href: "https://github.com/Ashotovich1990"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fab fa-github"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "linkedin",
+        href: "https://www.linkedin.com/in/aram-sargsyan-63035b177/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fab fa-linkedin"
+      }))));
     }
   }]);
 

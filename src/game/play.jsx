@@ -21,7 +21,7 @@ class Play extends React.Component {
     };
 
     gameOver() {
-        let msg = this.state.enemyShips === 20 ? "You Won!" : "You Lost...";
+        let msg = this.state.enemyShips === 20 ? "You Won! You destroyed all enemy ships" : "You Lost...All your ships are destroyed";
         
         return (
             <div className="gameover">
@@ -48,6 +48,10 @@ class Play extends React.Component {
                     <Board player={false} turn={this.state.turn} handleTurn={this.handleTurn} countStrike={this.countStrike}/>
                     {turnPointer(this.state.turn)}
                     <Board player={true} turn={!this.state.turn} handleTurn={this.handleTurn} countStrike={this.countStrike}/>
+                </div>
+                <div class="github-link">
+                    <a id="github" href="https://github.com/Ashotovich1990"><i class="fab fa-github"></i></a>
+                    <a id="linkedin" href="https://www.linkedin.com/in/aram-sargsyan-63035b177/"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         );
