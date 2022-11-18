@@ -21,7 +21,7 @@
   "homepage": " https://ashotovich1990.github.io/battleship/",
   "devDependencies": {
     "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
